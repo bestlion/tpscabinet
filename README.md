@@ -25,7 +25,7 @@ Windows XP SP 3, Windows 7, Windows Vista, Windows 8 with .NET Framework 2.0
 - Binary files would in tpscabinet\tpscabinet\bin\[Debug|Release] dir
 
 ### Screenshots
-![TPS Informer screenshot](screenshots/tpsinformer.jpg?raw=true "TPS Informer screenshot")
+![TPS Informer screenshot](screenshots/tpsinformer.png?raw=true "TPS Informer screenshot")
 
 ### License
 [The MIT License (MIT)](LICENSE)
