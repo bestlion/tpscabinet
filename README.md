@@ -2,10 +2,13 @@ TPS Informer
 ==========
 TPS Informer its desktop software for download and show internet statistic usage from personal cabinet (for TPS UZ users)
 
+### Screenshots
+![TPS Informer screenshot](screenshots/tpsinformer.png?raw=true "TPS Informer screenshot")
+
 ### Requirements
 Windows XP SP 3, Windows 7, Windows Vista, Windows 8 with .NET Framework 2.0
 
-### Installation and 
+### Installation 
 - Download latest binary
 - Unpack and run tpscabinet.exe
 
@@ -24,11 +27,9 @@ Windows XP SP 3, Windows 7, Windows Vista, Windows 8 with .NET Framework 2.0
 - Open tpscabinet.sln in CTRL-SHIFT-B for compile
 - Binary files would in tpscabinet\tpscabinet\bin\[Debug|Release] dir
 
-### Screenshots
-![TPS Informer screenshot](screenshots/tpsinformer.png?raw=true "TPS Informer screenshot")
-
 ### License
+Copyright (c) 2014 Yuri Egorichev  
 [The MIT License (MIT)](LICENSE)
-Copyright (c) 2014 Yuri Egorichev
+
 
 
