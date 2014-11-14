@@ -147,8 +147,8 @@ namespace tpscabinet
                 lbl_Info.Text += "Использовано: " + tps_cabinet.TraffUsed + " Мб" + DayUsed + "\r\n";
 
                 string PlaningDayUse = "";
-                if (tps_cabinet.TraffLeft > 0 && (DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) - DateTime.Now.Day) != 0)
-                    PlaningDayUse = " (" + (tps_cabinet.TraffLeft / DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) - DateTime.Now.Day).ToString("f2") + " Мб/день)";
+                if (tps_cabinet.TraffLeft > 0 && (DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) - DateTime.Now.Day) > 0)
+                    PlaningDayUse = " (" + (tps_cabinet.TraffLeft / (DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) - DateTime.Now.Day)).ToString("f2") + " Мб/день)";
 
                 lbl_Info.Text += "Остаток: " + tps_cabinet.TraffLeft + " Мб" + PlaningDayUse + "\r\n";
                 lbl_Info.Text += "Баланс: $ " + tps_cabinet.Balance + " / Курс: " + tps_cabinet.Kurs.ToString("f2") + "\r\n";

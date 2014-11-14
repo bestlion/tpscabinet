@@ -21,7 +21,7 @@ namespace tpscabinet
             request.CookieContainer = CookieContainer;
             request.Timeout = 10000; // 10 sec
             request.ReadWriteTimeout = 120000; // 120 sec
-            //request.AllowAutoRedirect = true;
+            request.AllowAutoRedirect = true;
             request.UserAgent = "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/534.7 (KHTML, like Gecko) Chrome/7.0.517.41 Safari/534.7"; /// google chrome
             return request;
         }
@@ -92,9 +92,8 @@ namespace tpscabinet
                 post_vars.Add("LoginForm[username]", this.Login);
                 post_vars.Add("LoginForm[password]", this.Password);
                 post_vars.Add("yt0", "submit");
-                wc.UploadValues("https://cabinet.tps.uz/login", "POST", post_vars);
-                this.CabinetHTML = UTF8Encoding.UTF8.GetString(wc.DownloadData("https://cabinet.tps.uz/"));
-                //System.IO.File.WriteAllText("out" + DateTime.Now.Ticks+".html", this.CabinetHTML, Encoding.UTF8);
+                this.CabinetHTML = UTF8Encoding.UTF8.GetString(wc.UploadValues("https://cabinet.tps.uz/login", "POST", post_vars));
+                System.IO.File.WriteAllText("out" + DateTime.Now.Ticks+".html", this.CabinetHTML, Encoding.UTF8);
                 
                 if (String.IsNullOrEmpty(this.CabinetHTML)) {
                     this.LastError = new Error("Данные не получены", false);
@@ -106,8 +105,8 @@ namespace tpscabinet
                 }
                 if (!String.IsNullOrEmpty(this.CabinetHTML))
                 {
-                    float.TryParse(GetCabinetVal(@"\s*traffic\s*:\s*'Использовано',\s*value:\s*(\d+(?:\.\d{1,2})?)\s*}"), out this.TraffUsed);
-                    float.TryParse(GetCabinetVal(@"\s*traffic\s*:\s*'Осталось',\s*value:\s*(-?\d+(?:\.\d{1,2})?)\s*}"), out this.TraffLeft);
+                    float.TryParse(GetCabinetVal(@"traffic\s*:\s*'Использовано',\s*value:\s*(\d+(?:\.\d{1,2})?)\s*}"), out this.TraffUsed);
+                    float.TryParse(GetCabinetVal(@"traffic\s*:\s*'Осталось',\s*value:\s*(-?\d+(?:\.\d{1,2})?)\s*}"), out this.TraffLeft);
                     if (TraffLeft < 0) TraffLeft = 0;
                     float.TryParse(GetCabinetVal(@"<strong\s+class=""balance""\s+data-accid=""\d+"">\s*(-?\d+(?:\.\d{1,2})?)\s*</strong>"), out this.Balance);
                     int.TryParse(GetCabinetVal(@"/pppoe_session\?id=(\d+)"), out this.CabinetID);
