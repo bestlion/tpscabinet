@@ -93,8 +93,9 @@ namespace tpscabinet
                 post_vars.Add("LoginForm[password]", this.Password);
                 post_vars.Add("yt0", "submit");
                 this.CabinetHTML = UTF8Encoding.UTF8.GetString(wc.UploadValues("https://cabinet.tps.uz/login", "POST", post_vars));
-                //System.IO.File.WriteAllText("out" + DateTime.Now.Ticks+".html", this.CabinetHTML, Encoding.UTF8);
-                
+#if DEBUG
+                System.IO.File.WriteAllText("out" + DateTime.Now.Ticks+".html", this.CabinetHTML, Encoding.UTF8);
+#endif                
                 if (String.IsNullOrEmpty(this.CabinetHTML)) {
                     this.LastError = new Error("Данные не получены", false);
                     return;
