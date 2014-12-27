@@ -24,7 +24,8 @@ namespace tpscabinet
             W32Helper = new helper();
             InfoNotifyWasShown = new Dictionary<string, DateTime>{
                 { "TraffNotify", DateTime.MinValue },
-                { "PaymentNotify", DateTime.MinValue }
+                { "PaymentNotify", DateTime.MinValue },
+                { "PackageTimeoutNotify", DateTime.MinValue }
             };
 
             InitializeComponent();
@@ -91,6 +92,7 @@ namespace tpscabinet
             else
                 NotifyFrm.FillData(Info);
             NotifyFrm.Invalidate(true);
+            NotifyFrm.Update();
             SetNotifyWindowsPos();
             NotifyFrm.Show((Permanent) ? 0 : 4000);
         }
@@ -147,10 +149,21 @@ namespace tpscabinet
                         Program.invokerControl.Invoke(new delegate_ShowNotify(ShowNotify), new object[] { "\r\nСегодня последний день оплаты\r\n\r\n", true });
                         this.InfoNotifyWasShown["PaymentNotify"] = DateTime.Now;
                     }
-                    ////// notify if traff less than limits (show one time in 4h)
-                    if (!NotifyFrm.Visible && Properties.Settings.Default.TraffNotify && (DateTime.Now - this.InfoNotifyWasShown["TraffNotify"]).TotalHours >= 4 && tps_cabinet.LastUpdate != DateTime.MinValue && tps_cabinet.TraffLeft < Properties.Settings.Default.TraffNotifyLimit && tps_cabinet.TraffLeft != 0)
+                    ////// notify if package will end in next 24h (show one time in 4h)
+                    if (!NotifyFrm.Visible && Properties.Settings.Default.PackageTimeoutNotify && tps_cabinet.TraffLeft == 0 && tps_cabinet.HasPackage && tps_cabinet.Packages[0].TotalHoursLeft < 24 && (DateTime.Now - this.InfoNotifyWasShown["PackageTimeoutNotify"]).TotalHours >= 4)
                     {
-                        Program.invokerControl.Invoke(new delegate_ShowNotify(ShowNotify), new object[] { "\r\nОстаток трафика меньше установленного лимита (" + tps_cabinet.TraffLeft + " Мб)\r\n\r\n", true });
+                        Program.invokerControl.Invoke(new delegate_ShowNotify(ShowNotify), new object[] { "\r\nДо окончания пакета: " + tps_cabinet.Packages[0].TimeLeftStr + "\r\n\r\n", true });
+                        this.InfoNotifyWasShown["PackageTimeoutNotify"] = DateTime.Now;
+                    }
+                    ////// notify if traff less than limits (show one time in 4h)
+                    if (!NotifyFrm.Visible && Properties.Settings.Default.TraffNotify && (DateTime.Now - this.InfoNotifyWasShown["TraffNotify"]).TotalHours >= 4 && tps_cabinet.LastUpdate != DateTime.MinValue && 
+                        (
+                            (tps_cabinet.TraffLeft != 0 && tps_cabinet.TraffLeft < Properties.Settings.Default.TraffNotifyLimit) || 
+                            (tps_cabinet.TraffLeft == 0 && tps_cabinet.HasPackage && tps_cabinet.Packages[0].TraffLeft < Properties.Settings.Default.TraffNotifyLimit)
+                        )
+                        )
+                    {
+                        Program.invokerControl.Invoke(new delegate_ShowNotify(ShowNotify), new object[] { "\r\nОстаток трафика меньше установленного лимита (" + ((tps_cabinet.TraffLeft != 0) ? tps_cabinet.TraffLeft : tps_cabinet.Packages[0].TraffLeft) + " Мб)\r\n\r\n", true });
                         this.InfoNotifyWasShown["TraffNotify"] = DateTime.Now;
                     }
                 }

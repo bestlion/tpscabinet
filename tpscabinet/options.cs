@@ -23,6 +23,8 @@ namespace tpscabinet
             num_TraffNotify.Value = Properties.Settings.Default.TraffNotifyLimit;
             cb_TraffNotify.Checked = Properties.Settings.Default.TraffNotify;
             cb_PaymentNotify.Checked = Properties.Settings.Default.PaymentNotify;
+            cb_DisablePakagesGraph.Checked = Properties.Settings.Default.DisablePackageDiagramm;
+            cb_PackageTimeoutNotify.Checked = Properties.Settings.Default.PackageTimeoutNotify;
             num_TraffNotify.Enabled = cb_TraffNotify.Checked;
         }
 
@@ -34,6 +36,8 @@ namespace tpscabinet
             Properties.Settings.Default.TraffNotifyLimit = (int)num_TraffNotify.Value;
             Properties.Settings.Default.TraffNotify = cb_TraffNotify.Checked;
             Properties.Settings.Default.PaymentNotify = cb_PaymentNotify.Checked;
+            Properties.Settings.Default.DisablePackageDiagramm = cb_DisablePakagesGraph.Checked;
+            Properties.Settings.Default.PackageTimeoutNotify = cb_PackageTimeoutNotify.Checked;
             Properties.Settings.Default.Save();
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }

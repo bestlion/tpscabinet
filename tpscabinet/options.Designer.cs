@@ -38,22 +38,24 @@
             this.num_TraffNotify = new System.Windows.Forms.NumericUpDown();
             this.cb_TraffNotify = new System.Windows.Forms.CheckBox();
             this.cb_PaymentNotify = new System.Windows.Forms.CheckBox();
+            this.cb_DisablePakagesGraph = new System.Windows.Forms.CheckBox();
+            this.cb_PackageTimeoutNotify = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.num_Interval)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_TraffNotify)).BeginInit();
             this.SuspendLayout();
             // 
             // txt_Login
             // 
-            this.txt_Login.Location = new System.Drawing.Point(103, 9);
+            this.txt_Login.Location = new System.Drawing.Point(112, 9);
             this.txt_Login.Name = "txt_Login";
-            this.txt_Login.Size = new System.Drawing.Size(147, 20);
+            this.txt_Login.Size = new System.Drawing.Size(178, 20);
             this.txt_Login.TabIndex = 0;
             // 
             // txt_Password
             // 
-            this.txt_Password.Location = new System.Drawing.Point(103, 38);
+            this.txt_Password.Location = new System.Drawing.Point(112, 38);
             this.txt_Password.Name = "txt_Password";
-            this.txt_Password.Size = new System.Drawing.Size(147, 20);
+            this.txt_Password.Size = new System.Drawing.Size(178, 20);
             this.txt_Password.TabIndex = 1;
             this.txt_Password.UseSystemPasswordChar = true;
             // 
@@ -86,7 +88,7 @@
             // 
             // num_Interval
             // 
-            this.num_Interval.Location = new System.Drawing.Point(196, 66);
+            this.num_Interval.Location = new System.Drawing.Point(236, 66);
             this.num_Interval.Maximum = new decimal(new int[] {
             1440,
             0,
@@ -108,7 +110,7 @@
             // 
             // btn_Save
             // 
-            this.btn_Save.Location = new System.Drawing.Point(80, 158);
+            this.btn_Save.Location = new System.Drawing.Point(105, 197);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(93, 23);
             this.btn_Save.TabIndex = 6;
@@ -118,7 +120,7 @@
             // 
             // num_TraffNotify
             // 
-            this.num_TraffNotify.Location = new System.Drawing.Point(179, 96);
+            this.num_TraffNotify.Location = new System.Drawing.Point(217, 96);
             this.num_TraffNotify.Maximum = new decimal(new int[] {
             2147483646,
             0,
@@ -152,18 +154,40 @@
             // cb_PaymentNotify
             // 
             this.cb_PaymentNotify.AutoSize = true;
-            this.cb_PaymentNotify.Location = new System.Drawing.Point(15, 122);
+            this.cb_PaymentNotify.Location = new System.Drawing.Point(15, 121);
             this.cb_PaymentNotify.Name = "cb_PaymentNotify";
-            this.cb_PaymentNotify.Size = new System.Drawing.Size(235, 30);
+            this.cb_PaymentNotify.Size = new System.Drawing.Size(276, 17);
             this.cb_PaymentNotify.TabIndex = 11;
-            this.cb_PaymentNotify.Text = "Уведомлять об оплате в последний день\r\nмесяца";
+            this.cb_PaymentNotify.Text = "Уведомлять об оплате в последний день месяца";
             this.cb_PaymentNotify.UseVisualStyleBackColor = true;
+            // 
+            // cb_DisablePakagesGraph
+            // 
+            this.cb_DisablePakagesGraph.AutoSize = true;
+            this.cb_DisablePakagesGraph.Location = new System.Drawing.Point(15, 141);
+            this.cb_DisablePakagesGraph.Name = "cb_DisablePakagesGraph";
+            this.cb_DisablePakagesGraph.Size = new System.Drawing.Size(219, 17);
+            this.cb_DisablePakagesGraph.TabIndex = 12;
+            this.cb_DisablePakagesGraph.Text = "Не показывать пакеты на диаграмме";
+            this.cb_DisablePakagesGraph.UseVisualStyleBackColor = true;
+            // 
+            // cb_PackageTimeoutNotify
+            // 
+            this.cb_PackageTimeoutNotify.AutoSize = true;
+            this.cb_PackageTimeoutNotify.Location = new System.Drawing.Point(15, 161);
+            this.cb_PackageTimeoutNotify.Name = "cb_PackageTimeoutNotify";
+            this.cb_PackageTimeoutNotify.Size = new System.Drawing.Size(241, 30);
+            this.cb_PackageTimeoutNotify.TabIndex = 13;
+            this.cb_PackageTimeoutNotify.Text = "Уведомлять за сутки до истечения срока \r\nактивного пакета";
+            this.cb_PackageTimeoutNotify.UseVisualStyleBackColor = true;
             // 
             // frm_options
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(262, 192);
+            this.ClientSize = new System.Drawing.Size(302, 230);
+            this.Controls.Add(this.cb_PackageTimeoutNotify);
+            this.Controls.Add(this.cb_DisablePakagesGraph);
             this.Controls.Add(this.cb_PaymentNotify);
             this.Controls.Add(this.cb_TraffNotify);
             this.Controls.Add(this.num_TraffNotify);
@@ -200,5 +224,7 @@
         private System.Windows.Forms.NumericUpDown num_TraffNotify;
         private System.Windows.Forms.CheckBox cb_TraffNotify;
         private System.Windows.Forms.CheckBox cb_PaymentNotify;
+        private System.Windows.Forms.CheckBox cb_DisablePakagesGraph;
+        private System.Windows.Forms.CheckBox cb_PackageTimeoutNotify;
     }
 }

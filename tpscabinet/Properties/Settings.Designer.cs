@@ -106,5 +106,33 @@ namespace tpscabinet.Properties {
                 this["PaymentNotify"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(PortableSettingsProvider))]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool DisablePackageDiagramm {
+            get {
+                return ((bool)(this["DisablePackageDiagramm"]));
+            }
+            set {
+                this["DisablePackageDiagramm"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(PortableSettingsProvider))]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool PackageTimeoutNotify {
+            get {
+                return ((bool)(this["PackageTimeoutNotify"]));
+            }
+            set {
+                this["PackageTimeoutNotify"] = value;
+            }
+        }
     }
 }

@@ -26,15 +26,12 @@ namespace tpscabinet
             invokerControl.CreateControl();
             Application.Run(new App());
         }
-        
-        
     }
 
     class myprof : IFormatProvider
     {
         public object GetFormat(Type formatType)
         {
-            
             throw new NotImplementedException();
         }
     }
