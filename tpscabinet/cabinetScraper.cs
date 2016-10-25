@@ -185,7 +185,8 @@ namespace tpscabinet
                     TraffLeft = 1500;
 #endif
                     float.TryParse(GetCabinetVal(@"<strong\s+class=""balance""\s+data-accid=""\d+"">\s*(-?\d+(?:\.\d{1,2})?)\s*</strong>"), out this.Balance);
-                    int.TryParse(GetCabinetVal(@"/pppoe_session\?id=(\d+)"), out this.CabinetID);
+                    //int.TryParse(GetCabinetVal(@"/pppoe_session\?id=(\d+)"), out this.CabinetID);
+                    int.TryParse(GetCabinetVal(@"chartTraffic-(\d+)"), out this.CabinetID);
                     float.TryParse(GetCabinetVal(@"<th>Статус</th>[\s\S]+?<td>\s*\$(\d+(?:\.\d{1,2})?)\s*</td>"), out this.AbonentPlata);
                     float.TryParse(GetCabinetVal(@"<p>1\s*доллар\s*США\s*=\s*(\d+(?:\.\d{1,2})?)"), out this.Kurs);
                     /// load packages page
